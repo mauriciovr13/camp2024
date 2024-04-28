@@ -1,17 +1,25 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import LogoIoasys from '../../assets/images/logo_ioasys.png';
-import {Button, TextInput} from 'react-native';
+import TextInput from '../../components/TextInput';
 
 const LoginScreen = () => {
+  const onPressLogin = async () => {};
+
   return (
     <StyledContainer>
       <StyledImage source={LogoIoasys} />
-      <StyledTitle>Seja bem vindo!</StyledTitle>
-      <StyledTitle>Calculadora IMC</StyledTitle>
-      <TextInput placeholder={'usuario'} />
-      <TextInput placeholder={'senha'} />
-      <Button title={'entrar'} />
+      <StyledTextContainer>
+        <StyledTitle>Seja bem vindo!</StyledTitle>
+        <StyledSubtitle>Calculadora IMC</StyledSubtitle>
+      </StyledTextContainer>
+      <StyledInputContainer>
+        <TextInput placeholder={'usuario'} />
+        <TextInput placeholder={'senha'} />
+      </StyledInputContainer>
+      <StyledTouchable activeOpacity={0.8} onPress={onPressLogin}>
+        <StyledButtonText>Entrar</StyledButtonText>
+      </StyledTouchable>
     </StyledContainer>
   );
 };
@@ -19,6 +27,7 @@ const LoginScreen = () => {
 const StyledContainer = styled.View`
   flex: 1;
   background-color: #c1007e;
+  padding: 0 36px;
 `;
 
 const StyledImage = styled.Image`
@@ -26,6 +35,41 @@ const StyledImage = styled.Image`
   align-self: center;
 `;
 
-const StyledTitle = styled.Text``;
+const StyledTextContainer = styled.View`
+  margin-top: 120px;
+`;
+
+const StyledTitle = styled.Text`
+  font-size: 31px;
+  line-height: 46px;
+  color: white;
+`;
+
+const StyledSubtitle = styled.Text`
+  font-size: 24px;
+  line-height: 36px;
+  color: white;
+  top: -10px;
+`;
+
+const StyledInputContainer = styled.View`
+  margin-top: 43px;
+  gap: 20px;
+`;
+
+const StyledTouchable = styled.TouchableOpacity`
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  padding: 15px 0 11px;
+  border-radius: 100px;
+`;
+
+const StyledButtonText = styled.Text`
+  color: white;
+  font-size: 16px;
+  line-height: 24px;
+`;
 
 export default LoginScreen;
