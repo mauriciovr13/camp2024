@@ -1,17 +1,28 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import LogoIoasys from '../../assets/images/logo_ioasys.png';
 import TextInput from '../../components/TextInput';
-import {useAppDispatch} from '../../hooks';
-import {login} from '../../store/slices/userSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { login } from '../../store/slices/userSlice.ts';
+import { RoutesNavigationProp } from '../../routes';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const { isLoading, accessToken } = useAppSelector(state => state.user);
+  const { navigate } = useNavigation<RoutesNavigationProp>();
+
   const onPressLogin = async () => {
-    dispatch(login({username, password}));
+    dispatch(login({ username, password }));
   };
+
+  useEffect(() => {
+    if (!isLoading && accessToken !== null) {
+      navigate('BMICalculation');
+    }
+  }, [isLoading, accessToken, navigate]);
 
   return (
     <StyledContainer>
@@ -29,6 +40,7 @@ const LoginScreen = () => {
         <TextInput
           placeholder="senha"
           value={password}
+          secureTextEntry
           onChangeText={setPassword}
         />
       </StyledInputContainer>

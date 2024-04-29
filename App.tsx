@@ -1,12 +1,15 @@
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
-import LoginScreen from './src/presentational/LoginScreen';
 import store from './src/store';
+import Routes from './src/routes';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <LoginScreen />
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
     </Provider>
   );
 };
