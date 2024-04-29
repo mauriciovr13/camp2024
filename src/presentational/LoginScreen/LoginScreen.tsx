@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import LogoIoasys from '../../assets/images/logo_ioasys.png';
 import TextInput from '../../components/TextInput';
+import {useAppDispatch} from '../../hooks';
+import {login} from '../../store/slices/userSlice.ts';
 
 const LoginScreen = () => {
-  const onPressLogin = async () => {};
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useAppDispatch();
+  const onPressLogin = async () => {
+    dispatch(login({username, password}));
+  };
 
   return (
     <StyledContainer>
@@ -14,8 +21,16 @@ const LoginScreen = () => {
         <StyledSubtitle>Calculadora IMC</StyledSubtitle>
       </StyledTextContainer>
       <StyledInputContainer>
-        <TextInput placeholder={'usuario'} />
-        <TextInput placeholder={'senha'} />
+        <TextInput
+          placeholder={'usuario'}
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TextInput
+          placeholder={'senha'}
+          value={password}
+          onChangeText={setPassword}
+        />
       </StyledInputContainer>
       <StyledTouchable activeOpacity={0.8} onPress={onPressLogin}>
         <StyledButtonText>Entrar</StyledButtonText>
