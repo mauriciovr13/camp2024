@@ -70,6 +70,7 @@ const StyledTitle = styled.Text`
   font-size: 31px;
   line-height: 46px;
   color: white;
+  font-family: 'Poppins';
 `;
 
 const StyledSubtitle = styled.Text`
@@ -77,6 +78,7 @@ const StyledSubtitle = styled.Text`
   line-height: 36px;
   color: white;
   top: -10px;
+  font-family: 'Poppins';
 `;
 
 const StyledInputContainer = styled.View`
