@@ -22,12 +22,12 @@ const LoginScreen = () => {
       </StyledTextContainer>
       <StyledInputContainer>
         <TextInput
-          placeholder={'usuario'}
+          placeholder="usuario"
           value={username}
           onChangeText={setUsername}
         />
         <TextInput
-          placeholder={'senha'}
+          placeholder="senha"
           value={password}
           onChangeText={setPassword}
         />
